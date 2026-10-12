@@ -247,133 +247,133 @@ const TradeLog = () => {
   )).sort();
 
   return (
-    <div className="space-y-6 animate-fade-in pb-12">
+    <div className="space-y-4 sm:space-y-6 animate-fade-in pb-12">
       
       {/* Top Section: Form & Stats */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         
         {/* Entry Form (Left) */}
-        <section className="bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white relative z-20">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+        <section className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white relative z-20">
+          <div className="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2">
+            <h3 className="text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
                <i className="fa-solid fa-plus-circle text-indigo-500"></i> บันทึกการทำรายการ
             </h3>
-            <div className="w-36">
+            <div className="w-32 sm:w-36">
               <input 
                 type="date" 
                 value={formDate} 
                 onChange={e => setFormDate(e.target.value)} 
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-600 focus:ring-2 focus:ring-indigo-300 outline-none font-bold shadow-sm cursor-pointer" 
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 sm:px-3 py-1.5 text-xs text-slate-600 focus:ring-2 focus:ring-indigo-300 outline-none font-bold shadow-sm cursor-pointer" 
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 items-end mb-3 sm:mb-4">
               <div className="relative z-30">
-                  <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase truncate">พอร์ตลงทุน</label>
+                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 mb-1 sm:mb-1.5 uppercase truncate">พอร์ตลงทุน</label>
                   <FilterDropdown value={formPortfolio} onChange={setFormPortfolio} isForm={true} />
               </div>
               <div>
-                  <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase truncate">ประเภท</label>
+                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 mb-1 sm:mb-1.5 uppercase truncate">ประเภท</label>
                   <TypeDropdown value={formType} onChange={setFormType} />
               </div>
               <div>
-                  <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase truncate">สัญลักษณ์</label>
+                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 mb-1 sm:mb-1.5 uppercase truncate">สัญลักษณ์</label>
                   <input 
                     type="text" 
                     value={formSymbol} 
                     onChange={e => setFormSymbol(e.target.value)} 
                     placeholder="เช่น AAPL"
                     list="symbol-suggestions"
-                    className="w-full bg-slate-50 border border-slate-100 rounded-xl p-2.5 h-11 text-sm focus:ring-2 focus:ring-indigo-300 outline-none text-slate-700 font-bold uppercase" 
+                    className="w-full bg-slate-50 border border-slate-100 rounded-xl p-2 sm:p-2.5 h-10 sm:h-11 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-300 outline-none text-slate-700 font-bold uppercase" 
                   />
                   <datalist id="symbol-suggestions">
                     {uniqueSymbols.map(sym => <option key={sym} value={sym} />)}
                   </datalist>
               </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-end">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 items-end">
               <div>
-                  <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase truncate">จำนวนหน่วย</label>
-                  <input type="number" value={formVolume} onChange={e => setFormVolume(e.target.value)} placeholder="0.00" className="w-full bg-slate-50 border border-slate-100 rounded-xl p-2.5 h-11 text-sm focus:ring-2 focus:ring-indigo-300 outline-none text-slate-700 font-bold" />
+                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 mb-1 sm:mb-1.5 uppercase truncate">จำนวนหน่วย</label>
+                  <input type="number" value={formVolume} onChange={e => setFormVolume(e.target.value)} placeholder="0.00" className="w-full bg-slate-50 border border-slate-100 rounded-xl p-2 sm:p-2.5 h-10 sm:h-11 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-300 outline-none text-slate-700 font-bold" />
               </div>
               <div>
-                  <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase truncate">ราคา/หน่วย</label>
-                  <input type="number" value={formPrice} onChange={e => setFormPrice(e.target.value)} placeholder="0.00" className="w-full bg-slate-50 border border-slate-100 rounded-xl p-2.5 h-11 text-sm focus:ring-2 focus:ring-indigo-300 outline-none text-slate-700 font-bold" />
+                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 mb-1 sm:mb-1.5 uppercase truncate">ราคา/หน่วย</label>
+                  <input type="number" value={formPrice} onChange={e => setFormPrice(e.target.value)} placeholder="0.00" className="w-full bg-slate-50 border border-slate-100 rounded-xl p-2 sm:p-2.5 h-10 sm:h-11 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-300 outline-none text-slate-700 font-bold" />
               </div>
               <div>
-                  <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase truncate">ค่าธรรมเนียม</label>
-                  <input type="number" value={formFee} onChange={e => setFormFee(e.target.value)} placeholder="0.00" className="w-full bg-slate-50 border border-slate-100 rounded-xl p-2.5 h-11 text-sm focus:ring-2 focus:ring-indigo-300 outline-none text-slate-700 font-bold" />
+                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 mb-1 sm:mb-1.5 uppercase truncate">ค่าธรรมเนียม</label>
+                  <input type="number" value={formFee} onChange={e => setFormFee(e.target.value)} placeholder="0.00" className="w-full bg-slate-50 border border-slate-100 rounded-xl p-2 sm:p-2.5 h-10 sm:h-11 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-300 outline-none text-slate-700 font-bold" />
               </div>
               <div>
-                  <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase truncate">มูลค่าสุทธิ</label>
-                  <input type="text" value={calculateTotal()} className="w-full bg-emerald-50 border-none rounded-xl p-2.5 h-11 text-sm outline-none text-emerald-700 font-bold" readOnly />
+                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 mb-1 sm:mb-1.5 uppercase truncate">มูลค่าสุทธิ</label>
+                  <input type="text" value={calculateTotal()} className="w-full bg-emerald-50 border-none rounded-xl p-2 sm:p-2.5 h-10 sm:h-11 text-xs sm:text-sm outline-none text-emerald-700 font-bold" readOnly />
               </div>
           </div>
-          <div className="mt-6">
-              <button onClick={handleSave} disabled={isSubmitting} className="w-full h-11 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-2.5 px-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-50">
+          <div className="mt-4 sm:mt-6">
+              <button onClick={handleSave} disabled={isSubmitting} className="w-full h-10 sm:h-11 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-2 sm:py-2.5 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-50">
                   {isSubmitting ? <i className="fa-solid fa-spinner fa-spin"></i> : <><i className="fa-solid fa-save"></i> บันทึก</>}
               </button>
           </div>
         </section>
 
         {/* Stats Cards (Right) */}
-        <section className="bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white flex flex-col">
-          <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+        <section className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white flex flex-col">
+          <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-4 sm:mb-6 flex items-center gap-2">
              <i className="fa-solid fa-chart-pie text-indigo-500"></i> สรุปข้อมูลการลงทุนทั้งหมด
           </h3>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 flex-1 grid-rows-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 flex-1">
             {/* Interest */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
                <div className="absolute -right-4 -top-4 w-12 h-12 bg-blue-50 rounded-full opacity-50 group-hover:scale-150 transition-transform"></div>
-               <p className="text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 whitespace-nowrap"><i className="fa-solid fa-piggy-bank text-blue-400"></i> ดอกเบี้ยรับ</p>
-               <div className="flex flex-col">
-                 <p className={`text-lg font-extrabold ${localTradeStats.totalInterestTHB === 0 ? 'text-slate-400' : 'text-emerald-600'}`}>฿{formatThb(localTradeStats.totalInterestTHB)}</p>
-                 <p className={`text-[11px] font-semibold mt-0.5 ${localTradeStats.totalInterestUSD === 0 ? 'text-slate-400/70' : 'text-emerald-600/70'}`}>(${formatThb(localTradeStats.totalInterestUSD)})</p>
+               <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 truncate"><i className="fa-solid fa-piggy-bank text-blue-400 shrink-0"></i> ดอกเบี้ยรับ</p>
+               <div className="flex flex-col min-w-0">
+                 <p className={`text-sm sm:text-base lg:text-lg font-extrabold truncate ${localTradeStats.totalInterestTHB === 0 ? 'text-slate-400' : 'text-emerald-600'}`}>฿{formatThb(localTradeStats.totalInterestTHB)}</p>
+                 <p className={`text-[10px] sm:text-[11px] font-semibold mt-0.5 truncate ${localTradeStats.totalInterestUSD === 0 ? 'text-slate-400/70' : 'text-emerald-600/70'}`}>(${formatThb(localTradeStats.totalInterestUSD)})</p>
                </div>
             </div>
             {/* Gross Div */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
                <div className="absolute -right-4 -top-4 w-12 h-12 bg-emerald-50 rounded-full opacity-50 group-hover:scale-150 transition-transform"></div>
-               <p className="text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 whitespace-nowrap"><i className="fa-solid fa-hand-holding-dollar text-emerald-400"></i> ปันผล(ก่อนหักภาษี)</p>
-               <div className="flex flex-col">
-                 <p className={`text-lg font-extrabold ${localTradeStats.totalDividendGrossTHB === 0 ? 'text-slate-400' : 'text-emerald-600'}`}>฿{formatThb(localTradeStats.totalDividendGrossTHB)}</p>
-                 <p className={`text-[11px] font-semibold mt-0.5 ${localTradeStats.totalDividendGrossUSD === 0 ? 'text-slate-400/70' : 'text-emerald-600/70'}`}>(${formatThb(localTradeStats.totalDividendGrossUSD)})</p>
+               <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 truncate"><i className="fa-solid fa-hand-holding-dollar text-emerald-400 shrink-0"></i> ปันผล(ก่อนหัก)</p>
+               <div className="flex flex-col min-w-0">
+                 <p className={`text-sm sm:text-base lg:text-lg font-extrabold truncate ${localTradeStats.totalDividendGrossTHB === 0 ? 'text-slate-400' : 'text-emerald-600'}`}>฿{formatThb(localTradeStats.totalDividendGrossTHB)}</p>
+                 <p className={`text-[10px] sm:text-[11px] font-semibold mt-0.5 truncate ${localTradeStats.totalDividendGrossUSD === 0 ? 'text-slate-400/70' : 'text-emerald-600/70'}`}>(${formatThb(localTradeStats.totalDividendGrossUSD)})</p>
                </div>
             </div>
             {/* Net Div */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
                <div className="absolute -right-4 -top-4 w-12 h-12 bg-green-50 rounded-full opacity-50 group-hover:scale-150 transition-transform"></div>
-               <p className="text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 whitespace-nowrap"><i className="fa-solid fa-sack-dollar text-green-500"></i> ปันผล(หลังหักภาษี)</p>
-               <div className="flex flex-col">
-                 <p className={`text-lg font-extrabold ${localTradeStats.netDividendTHB === 0 ? 'text-slate-400' : 'text-emerald-600'}`}>฿{formatThb(localTradeStats.netDividendTHB)}</p>
-                 <p className={`text-[11px] font-semibold mt-0.5 ${localTradeStats.netDividendUSD === 0 ? 'text-slate-400/70' : 'text-emerald-600/70'}`}>(${formatThb(localTradeStats.netDividendUSD)})</p>
+               <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 truncate"><i className="fa-solid fa-sack-dollar text-green-500 shrink-0"></i> ปันผล(หลังหัก)</p>
+               <div className="flex flex-col min-w-0">
+                 <p className={`text-sm sm:text-base lg:text-lg font-extrabold truncate ${localTradeStats.netDividendTHB === 0 ? 'text-slate-400' : 'text-emerald-600'}`}>฿{formatThb(localTradeStats.netDividendTHB)}</p>
+                 <p className={`text-[10px] sm:text-[11px] font-semibold mt-0.5 truncate ${localTradeStats.netDividendUSD === 0 ? 'text-slate-400/70' : 'text-emerald-600/70'}`}>(${formatThb(localTradeStats.netDividendUSD)})</p>
                </div>
             </div>
             {/* Trading Fees */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
                <div className="absolute -right-4 -top-4 w-12 h-12 bg-slate-100 rounded-full opacity-50 group-hover:scale-150 transition-transform"></div>
-               <p className="text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 whitespace-nowrap"><i className="fa-solid fa-receipt text-slate-400"></i> ค่าธรรมเนียมซื้อ-ขาย</p>
-               <div className="flex flex-col">
-                 <p className={`text-lg font-extrabold ${localTradeStats.totalTradingFeeTHB === 0 ? 'text-slate-400' : 'text-rose-600'}`}>฿{formatThb(localTradeStats.totalTradingFeeTHB)}</p>
-                 <p className={`text-[11px] font-semibold mt-0.5 ${localTradeStats.totalTradingFeeUSD === 0 ? 'text-slate-400/70' : 'text-rose-600/70'}`}>(${formatThb(localTradeStats.totalTradingFeeUSD)})</p>
+               <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 truncate"><i className="fa-solid fa-receipt text-slate-400 shrink-0"></i> ค่าธรรมเนียม</p>
+               <div className="flex flex-col min-w-0">
+                 <p className={`text-sm sm:text-base lg:text-lg font-extrabold truncate ${localTradeStats.totalTradingFeeTHB === 0 ? 'text-slate-400' : 'text-rose-600'}`}>฿{formatThb(localTradeStats.totalTradingFeeTHB)}</p>
+                 <p className={`text-[10px] sm:text-[11px] font-semibold mt-0.5 truncate ${localTradeStats.totalTradingFeeUSD === 0 ? 'text-slate-400/70' : 'text-rose-600/70'}`}>(${formatThb(localTradeStats.totalTradingFeeUSD)})</p>
                </div>
             </div>
             {/* Tax */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
                <div className="absolute -right-4 -top-4 w-12 h-12 bg-rose-50 rounded-full opacity-50 group-hover:scale-150 transition-transform"></div>
-               <p className="text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 whitespace-nowrap"><i className="fa-solid fa-file-invoice-dollar text-rose-400"></i> ภาษีหัก ณ ที่จ่าย</p>
-               <div className="flex flex-col">
-                 <p className={`text-lg font-extrabold ${localTradeStats.totalDividendTaxTHB === 0 ? 'text-slate-400' : 'text-rose-600'}`}>฿{formatThb(localTradeStats.totalDividendTaxTHB)}</p>
-                 <p className={`text-[11px] font-semibold mt-0.5 ${localTradeStats.totalDividendTaxUSD === 0 ? 'text-slate-400/70' : 'text-rose-600/70'}`}>(${formatThb(localTradeStats.totalDividendTaxUSD)})</p>
+               <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 truncate"><i className="fa-solid fa-file-invoice-dollar text-rose-400 shrink-0"></i> ภาษีหัก ณ ที่จ่าย</p>
+               <div className="flex flex-col min-w-0">
+                 <p className={`text-sm sm:text-base lg:text-lg font-extrabold truncate ${localTradeStats.totalDividendTaxTHB === 0 ? 'text-slate-400' : 'text-rose-600'}`}>฿{formatThb(localTradeStats.totalDividendTaxTHB)}</p>
+                 <p className={`text-[10px] sm:text-[11px] font-semibold mt-0.5 truncate ${localTradeStats.totalDividendTaxUSD === 0 ? 'text-slate-400/70' : 'text-rose-600/70'}`}>(${formatThb(localTradeStats.totalDividendTaxUSD)})</p>
                </div>
             </div>
             {/* Total Fees */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-sm border border-slate-100 flex flex-col justify-center h-full relative overflow-hidden group">
                <div className="absolute -right-4 -top-4 w-12 h-12 bg-red-50 rounded-full opacity-50 group-hover:scale-150 transition-transform"></div>
-               <p className="text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 whitespace-nowrap"><i className="fa-solid fa-calculator text-red-400"></i> รวมค่าธรรมเนียมทั้งหมด</p>
-               <div className="flex flex-col">
-                 <p className={`text-lg font-extrabold ${localTradeStats.totalFeesTHB === 0 ? 'text-slate-400' : 'text-rose-600'}`}>฿{formatThb(localTradeStats.totalFeesTHB)}</p>
-                 <p className={`text-[11px] font-semibold mt-0.5 ${localTradeStats.totalFeesUSD === 0 ? 'text-slate-400/70' : 'text-rose-600/70'}`}>(${formatThb(localTradeStats.totalFeesUSD)})</p>
+               <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mb-1 flex items-center gap-1.5 truncate"><i className="fa-solid fa-calculator text-red-400 shrink-0"></i> รวมค่าธรรมเนียม</p>
+               <div className="flex flex-col min-w-0">
+                 <p className={`text-sm sm:text-base lg:text-lg font-extrabold truncate ${localTradeStats.totalFeesTHB === 0 ? 'text-slate-400' : 'text-rose-600'}`}>฿{formatThb(localTradeStats.totalFeesTHB)}</p>
+                 <p className={`text-[10px] sm:text-[11px] font-semibold mt-0.5 truncate ${localTradeStats.totalFeesUSD === 0 ? 'text-slate-400/70' : 'text-rose-600/70'}`}>(${formatThb(localTradeStats.totalFeesUSD)})</p>
                </div>
             </div>
           </div>
@@ -381,42 +381,42 @@ const TradeLog = () => {
       </div>
 
       {/* Table Section with Integrated Search */}
-      <section className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white overflow-hidden relative z-10">
+      <section className="bg-white rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white overflow-hidden relative z-10">
         {/* Table Header & Search Bar */}
-        <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 bg-slate-50/30">
-          <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+        <div className="p-3.5 sm:p-6 border-b border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 bg-slate-50/30">
+          <h2 className="text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
             <i className="fa-solid fa-clock-rotate-left text-indigo-500"></i> ตารางประวัติการทำรายการ
           </h2>
-          <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
-            <div className="relative">
+          <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 w-full md:w-auto">
+            <div className="relative flex-1 sm:w-64">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i className="fa-solid fa-search text-slate-400"></i>
+                <i className="fa-solid fa-search text-slate-400 text-xs"></i>
               </div>
               <input 
                 type="text" 
                 placeholder="ค้นหาสัญลักษณ์ หรือ พอร์ต..." 
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 h-10 w-full md:w-64 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none font-medium text-slate-700 shadow-sm transition-all"
+                className="pl-9 pr-3 sm:pl-10 sm:pr-4 py-1.5 sm:py-2 h-9 sm:h-10 w-full bg-white border border-slate-200 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none font-medium text-slate-700 shadow-sm transition-all"
               />
             </div>
             <FilterDropdown value={portfolioFilter} onChange={setPortfolioFilter} />
           </div>
         </div>
 
-        <div className="overflow-x-auto px-6 pb-6 mt-4">
-          <table className="w-full text-left border-collapse text-sm whitespace-nowrap">
+        <div className="overflow-x-auto px-3 sm:px-6 pb-3 sm:pb-6 mt-2 sm:mt-4">
+          <table className="w-full text-left border-collapse text-xs sm:text-sm whitespace-nowrap">
             <thead>
               <tr className="bg-emerald-50/80 text-emerald-900 font-bold border-b border-emerald-100">
-                <th className="p-4 uppercase tracking-wider text-xs rounded-tl-xl">วันที่</th>
-                <th className="p-4 uppercase tracking-wider text-xs">พอร์ต</th>
-                <th className="p-4 uppercase tracking-wider text-xs">ประเภท</th>
-                <th className="p-4 uppercase tracking-wider text-xs">สัญลักษณ์</th>
-                <th className="p-4 uppercase tracking-wider text-xs text-right">จำนวน</th>
-                <th className="p-4 uppercase tracking-wider text-xs text-right">ราคา</th>
-                <th className="p-4 uppercase tracking-wider text-xs text-right">ค่าธรรมเนียม</th>
-                <th className="p-4 uppercase tracking-wider text-xs text-right">มูลค่ารวม</th>
-                <th className="p-4 uppercase tracking-wider text-xs text-center rounded-tr-xl">ลบ</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs rounded-tl-xl">วันที่</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs">พอร์ต</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs">ประเภท</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs">สัญลักษณ์</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs text-right">จำนวน</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs text-right">ราคา</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs text-right">ค่าธรรมเนียม</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs text-right">มูลค่ารวม</th>
+                <th className="p-2.5 sm:p-4 uppercase tracking-wider text-xs text-center rounded-tr-xl">ลบ</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
@@ -433,18 +433,18 @@ const TradeLog = () => {
 
                   return (
                     <tr key={idx} className="hover:bg-slate-50/50 transition-colors group">
-                      <td className="p-4 text-slate-500 font-medium">{displayDate}</td>
-                      <td className="p-4 text-slate-600 font-medium">{item.portfolio}</td>
-                      <td className="p-4">
-                        <span className={`${typeClass} px-3 py-1 rounded-lg text-xs font-bold shadow-sm`}>{item.type}</span>
+                      <td className="p-2.5 sm:p-4 text-slate-500 font-medium text-xs sm:text-sm">{displayDate}</td>
+                      <td className="p-2.5 sm:p-4 text-slate-600 font-medium text-xs sm:text-sm">{item.portfolio}</td>
+                      <td className="p-2.5 sm:p-4">
+                        <span className={`${typeClass} px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-lg text-xs font-bold shadow-sm`}>{item.type}</span>
                       </td>
-                      <td className="p-4 font-extrabold text-slate-800 uppercase">{item.symbol}</td>
-                      <td className="p-4 text-slate-600 font-medium text-right">{parseFloat(item.volume).toLocaleString('en-US', {maximumFractionDigits: 4})}</td>
-                      <td className="p-4 text-slate-600 font-medium text-right">{parseFloat(item.price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 4})}</td>
-                      <td className="p-4 text-slate-600 font-medium text-right">{parseFloat(item.fee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                      <td className="p-4 font-bold text-slate-700 text-right">{parseFloat(item.totalValue).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                      <td className="p-4 text-center">
-                        <button onClick={() => handleDelete(idx)} className="text-slate-300 hover:text-rose-500 transition-colors p-2 rounded-full hover:bg-rose-50">
+                      <td className="p-2.5 sm:p-4 font-extrabold text-slate-800 uppercase text-xs sm:text-sm">{item.symbol}</td>
+                      <td className="p-2.5 sm:p-4 text-slate-600 font-medium text-right text-xs sm:text-sm">{parseFloat(item.volume).toLocaleString('en-US', {maximumFractionDigits: 4})}</td>
+                      <td className="p-2.5 sm:p-4 text-slate-600 font-medium text-right text-xs sm:text-sm">{parseFloat(item.price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 4})}</td>
+                      <td className="p-2.5 sm:p-4 text-slate-600 font-medium text-right text-xs sm:text-sm">{parseFloat(item.fee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                      <td className="p-2.5 sm:p-4 font-bold text-slate-700 text-right text-xs sm:text-sm">{parseFloat(item.totalValue).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                      <td className="p-2.5 sm:p-4 text-center">
+                        <button onClick={() => handleDelete(idx)} className="text-slate-300 hover:text-rose-500 transition-colors p-1.5 sm:p-2 rounded-full hover:bg-rose-50 text-xs sm:text-sm">
                             <i className="fa-solid fa-trash-can"></i>
                         </button>
                       </td>
@@ -453,7 +453,7 @@ const TradeLog = () => {
                 })
               ) : (
                 <tr>
-                  <td colSpan="9" className="p-8 text-center text-slate-400 font-medium">ไม่พบข้อมูลการทำรายการ</td>
+                  <td colSpan="9" className="p-6 sm:p-8 text-center text-slate-400 font-medium text-xs sm:text-sm">ไม่พบข้อมูลการทำรายการ</td>
                 </tr>
               )}
             </tbody>

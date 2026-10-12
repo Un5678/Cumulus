@@ -1,8 +1,8 @@
 {
-  "name": "my-investment-react",
+  "name": "cumulus",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://un5678.github.io/MyInvestment/",
+  "homepage": "https://un5678.github.io/Cumulus/",
   "type": "module",
   "scripts": {
     "dev": "vite",

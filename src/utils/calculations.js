@@ -723,7 +723,8 @@ export const processDashboardData = (globalTradeData, globalMarketData, globalPr
              cumulativePct: trueCumulativePct
         });
     });
-    monthlyPerformance.reverse();
+    
+    // เรียงจากเก่าไปใหม่ (ซ้ายไปขวา) ข้อมูลทั้งหมดเพื่อนำไปทำ Scrollbar
     
     if (chartLabels.length === 0) {
         let todayStr = now.toISOString().split('T')[0];
