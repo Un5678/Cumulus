@@ -11,7 +11,7 @@ const Header = ({ activeTab, setActiveTab }) => {
           <img 
             src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Cumulus Logo" 
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover shadow-md shadow-emerald-900/10 ring-1 ring-emerald-500/20 hover:scale-105 transition-transform" 
+            className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-md hover:scale-105 transition-transform duration-200" 
           />
           <span className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-green-800 to-emerald-600 bg-clip-text text-transparent tracking-tight drop-shadow-sm">
             Cumulus
